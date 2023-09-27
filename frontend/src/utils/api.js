@@ -50,9 +50,9 @@ class Api {
 };
 
 export const api = new Api({
-  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-69',
+  baseUrl: 'http://mesto-backend.msrdnv.nomoredomainsrocks.ru',
   headers: {
-    authorization: '8b924108-8ca1-4711-b126-8a96bbad8ecc',
+    'Authorization' : `Bearer ${localStorage.getItem('token')}`,
     'Content-Type': 'application/json'
   }
 });

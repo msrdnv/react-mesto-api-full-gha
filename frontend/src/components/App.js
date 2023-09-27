@@ -45,12 +45,12 @@ export default function App() {
       setCards(cards)
     })
     .catch(console.error);
-  }, []);
+  }, [loggedIn]);
 
   React.useEffect(() => {
     const token = localStorage.getItem('token');
     authApi.checkToken(token)
-    .then(({data}) => {
+    .then((data) => {
       setEmail(data.email);
       setLoggedIn(true);
       navigate('/');

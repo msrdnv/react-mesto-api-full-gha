@@ -27,7 +27,7 @@ app.use((req, res, next) => {
   if (allowedCors.includes(origin)) {
     res.header('Access-Control-Allow-Origin', origin);
   }
-  return next();
+  next();
 });
 app.use((req, res, next) => {
   const { method } = req;
@@ -35,9 +35,9 @@ app.use((req, res, next) => {
   if (method === 'OPTIONS') {
     res.header('Access-Control-Allow-Methods', DEFAULT_ALLOWED_METHODS);
     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
-    return res.status(200);
+    res.status(200);
   }
-  return next();
+  next();
 });
 app.post('/signin', celebrate({
   body: Joi.object().keys({

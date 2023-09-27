@@ -22,11 +22,6 @@ const allowedCors = [
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(requestLogger);
-app.get('/crash-test', () => {
-  setTimeout(() => {
-    throw new Error('Сервер сейчас упадёт');
-  }, 0);
-});
 app.use((req, res, next) => {
   const { origin } = req.headers;
   if (allowedCors.includes(origin)) {
@@ -59,6 +54,11 @@ app.post('/signup', celebrate({
     password: Joi.string().required(),
   }),
 }), createUser);
+app.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+});
 app.use('/', auth, index);
 app.use(errorLogger);
 app.use(errors());

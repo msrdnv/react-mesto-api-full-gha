@@ -30,7 +30,7 @@ class AuthApi {
 };
 
   export const authApi = new AuthApi({
-    baseUrl: 'mongodb://127.0.0.1:27017/mestodb',
+    baseUrl: 'https://mesto-backend.msrdnv.nomoredomainsrocks.ru',
     headers: {
       'Content-Type': 'application/json'
     }

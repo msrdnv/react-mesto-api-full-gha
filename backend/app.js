@@ -11,8 +11,7 @@ const auth = require('./middlewares/auth');
 const { handleErrors } = require('./middlewares/handleErrors');
 const { handleNotFoundPage } = require('./middlewares/handleNotFoundPage');
 
-const { PORT, DB_URL } = process.env;
-mongoose.connect(DB_URL);
+mongoose.connect('mongodb://localhost:27017/mestodb');
 
 const app = express();
 const allowedCors = [
@@ -66,6 +65,6 @@ app.use(errors());
 app.use(handleErrors);
 app.use('*', handleNotFoundPage);
 
-app.listen(PORT, () => {
-  console.log(`App listening on port ${PORT}`);
+app.listen(() => {
+  console.log('App listening on port 3000');
 });

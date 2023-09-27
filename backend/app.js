@@ -15,7 +15,7 @@ mongoose.connect(DB_URL);
 
 const app = express();
 const allowedCors = [
-  'https://mesto-frontend.msrdnv.nomoredomainsrocks.ru',
+  'http://mesto-frontend.msrdnv.nomoredomainsrocks.ru',
 ];
 
 app.use(express.json());

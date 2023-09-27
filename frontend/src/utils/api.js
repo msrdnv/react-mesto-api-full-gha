@@ -50,7 +50,7 @@ class Api {
 };
 
 export const api = new Api({
-  baseUrl: 'http://mesto-backend.msrdnv.nomoredomainsrocks.ru',
+  baseUrl: 'https://mesto-backend.msrdnv.nomoredomainsrocks.ru',
   headers: {
     'Authorization' : `Bearer ${localStorage.getItem('token')}`,
     'Content-Type': 'application/json'

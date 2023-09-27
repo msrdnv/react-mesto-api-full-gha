@@ -1,0 +1,7 @@
+@media screen and (max-width: 635px) {
+  .popup__container_place-info {
+    margin: 130px auto auto;
+    min-width: 280px;
+    min-height: 308px;
+  }
+}

@@ -1,0 +1,11 @@
+@media screen and (max-width: 635px) {
+  .header__nav-container_mobile-menu-activated {
+    position: absolute;
+    top: 40px;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 18px;
+  }
+}

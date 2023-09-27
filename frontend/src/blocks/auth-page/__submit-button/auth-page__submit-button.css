@@ -1,0 +1,28 @@
+.auth-page__submit-button {
+  margin: 186px 0 15px;
+  padding: 0;
+  border: none;
+  width: 358px;
+  height: 50px;
+  cursor: pointer;
+  background: url(../../../images/submit-button-white.svg) transparent no-repeat;
+  background-size: 358px 50px;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.21;
+  color: #000;
+}
+
+.auth-page__submit-button:hover {
+  opacity: 0.85;
+}
+
+@media screen and (max-width: 635px) {
+  .auth-page__submit-button {
+    margin: 143px 0 20px;
+    width: 260px;
+    height: 46px;
+    background-size: 260px 46px;
+    font-size: 16px;
+  }
+}

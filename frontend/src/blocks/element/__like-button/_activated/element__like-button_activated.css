@@ -1,0 +1,4 @@
+.element__like-button_activated {
+  background: url('../../../../images/like-button-active.svg') transparent no-repeat;
+  background-size: contain;
+}

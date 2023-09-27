@@ -1,0 +1,15 @@
+.profile__avatar-update-button {
+  display: none;
+  grid-area: avatar;
+  border-radius: 100%;
+  width: 120px;
+  height: 120px;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 1;
+}

@@ -1,0 +1,13 @@
+.element__name {
+  margin: 25px auto auto 21px;
+  padding: 0;
+  max-width: 200px;
+  color: #000;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 29px;
+  grid-area: element-name;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}

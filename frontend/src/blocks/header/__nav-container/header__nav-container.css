@@ -1,0 +1,12 @@
+.header__nav-container {
+  display: flex;
+  position: sticky;
+  right: 27px;
+  column-gap: 24px;
+}
+
+@media screen and (max-width: 635px) {
+  .header__nav-container {
+    right: 30px;
+  }
+}

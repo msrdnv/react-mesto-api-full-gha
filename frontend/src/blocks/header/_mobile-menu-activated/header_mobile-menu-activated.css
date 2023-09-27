@@ -1,0 +1,7 @@
+@media screen and (max-width: 635px) {
+  .header_mobile-menu-activated {
+    min-height: 54px;
+    margin: 140px 0 42px 0;
+    border-top: 1px solid #545454;
+  }
+}

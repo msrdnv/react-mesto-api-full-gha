@@ -1,0 +1,6 @@
+.header__nav-menu-icon_toggled {
+  background: url(../../../../images/close-icon.svg) transparent no-repeat;
+  background-size: contain;
+  height: 20px;
+  width: 20px;
+}

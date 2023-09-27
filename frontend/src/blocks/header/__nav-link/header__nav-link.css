@@ -1,0 +1,22 @@
+.header__nav-link {
+  margin: 7px 0 0 0;
+  padding: 0;
+  text-decoration: none;
+  height: min-content;
+  color: #FFF;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 22px;
+}
+
+@media screen and (max-width: 635px) {
+  .header__nav-link {
+    font-size: 14px;
+    line-height: 1.21;
+  }
+}
+
+.header__nav-link:hover {
+  opacity: 0.6;
+}
+

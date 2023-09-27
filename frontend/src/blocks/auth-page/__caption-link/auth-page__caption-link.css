@@ -1,0 +1,8 @@
+.auth-page__caption-link {
+  color: #FFF;
+  text-decoration: none;
+}
+
+.auth-page__caption-link:hover {
+  opacity: 0.6;
+}

@@ -1,0 +1,11 @@
+.element {
+  margin: 0;
+  padding: 0;
+  min-height: 361px;
+  background-color: #FFF;
+  border-radius: 10px;
+  display: grid;
+  grid-template-areas:
+  "element-image-delete-button element-image-delete-button"
+  "element-name element-like-container";
+}

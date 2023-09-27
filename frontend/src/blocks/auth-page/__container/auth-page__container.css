@@ -1,0 +1,13 @@
+.auth-page__container {
+  margin: 20px auto auto;
+  padding: 0;
+  width: 358px;
+}
+
+@media screen and (max-width: 635px) {
+  .auth-page__container {
+    margin: 0px auto auto;
+    width: 260px;
+  }
+}
+

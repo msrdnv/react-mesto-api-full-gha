@@ -1,0 +1,22 @@
+.header__nav-menu-icon {
+  display: none;
+  margin: 4px 0 0 0;
+  padding: 0;
+  height: 21px;
+  width: 24px;
+  border: none;
+  background: url(../../../images/nav-menu-icon.svg) transparent no-repeat;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 635px) {
+  .header__nav-menu-icon {
+    display: block;
+    position: sticky;
+    right: 30px;
+  }
+}
+
+.header__nav-menu-icon:hover {
+  opacity: 0.6;
+}

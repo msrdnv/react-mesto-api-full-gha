@@ -1,0 +1,8 @@
+@media screen and (max-width: 635px) {
+  .header__signout-link_mobile-menu-activated {
+    margin: 0;
+    padding: 0;
+    display: block;
+    position: relative;
+  }
+}

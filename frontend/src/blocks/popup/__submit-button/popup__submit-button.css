@@ -1,0 +1,29 @@
+.popup__submit-button {
+  margin: 18px 36px 37px 36px;
+  padding: 0;
+  border: none;
+  width: 358px;
+  height: 50px;
+  cursor: pointer;
+  background: url(../../../images/submit-button.svg) transparent no-repeat;
+  background-size: 358px 50px;
+  color: #FFF;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.21;
+  }
+
+.popup__submit-button:hover:not(.popup__submit-button_disabled) {
+  opacity: 0.8;
+}
+
+@media screen and (max-width: 635px) {
+  .popup__submit-button {
+    margin: 15px 22px 25px 22px;
+    width: 238px;
+    height: 46px;
+    background-size: 238px 46px;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    font-size: 14px;
+  }
+}

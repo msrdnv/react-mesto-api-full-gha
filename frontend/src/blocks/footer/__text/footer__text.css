@@ -1,0 +1,19 @@
+.footer__text {
+  position: sticky;
+  left: 27px;
+  margin: 0;
+  padding: 0;
+  color: #545454;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.21;
+  max-width: 318px;
+}
+
+@media screen and (max-width: 635px) {
+  .footer__text {
+    left: 19px;
+    font-size: 14px;
+    max-width: 282px;
+  }
+}

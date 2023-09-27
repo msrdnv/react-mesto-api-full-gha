@@ -13,7 +13,8 @@ const { handleNotFoundPage } = require('./middlewares/handleNotFoundPage');
 const { handleCorsOrigin } = require('./middlewares/handleCorsOrigin');
 const { handleCorsPreflight } = require('./middlewares/handleCorsPreflight');
 
-mongoose.connect('mongodb://127.0.0.1:27017/mestodb');
+const { PORT = 3000, DB_URL = 'mongodb://127.0.0.1:27017/mestodb' } = process.env;
+mongoose.connect(DB_URL);
 
 const app = express();
 
@@ -48,6 +49,6 @@ app.use(errors());
 app.use(handleErrors);
 app.use('*', handleNotFoundPage);
 
-app.listen(3000, () => {
-  console.log(`App listening on port ${3000}`);
+app.listen(PORT, () => {
+  console.log(`App listening on port ${PORT}`);
 });

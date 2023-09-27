@@ -11,7 +11,7 @@ const auth = require('./middlewares/auth');
 const { handleErrors } = require('./middlewares/handleErrors');
 const { handleNotFoundPage } = require('./middlewares/handleNotFoundPage');
 
-mongoose.connect('mongodb://localhost:27017/mestodb');
+mongoose.connect('mongodb://127.0.0.1:27017/mestodb');
 
 const app = express();
 const allowedCors = [

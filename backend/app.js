@@ -10,32 +10,19 @@ const index = require('./routes/index');
 const auth = require('./middlewares/auth');
 const { handleErrors } = require('./middlewares/handleErrors');
 const { handleNotFoundPage } = require('./middlewares/handleNotFoundPage');
+const { handleCorsOrigin } = require('./middlewares/handleCorsOrigin');
+const { handleCorsPreflight } = require('./middlewares/handleCorsPreflight');
 
 mongoose.connect('mongodb://127.0.0.1:27017/mestodb');
 
 const app = express();
-const allowedCors = [
-  'http://mesto-frontend.msrdnv.nomoredomainsrocks.ru',
-  'https://mesto-frontend.msrdnv.nomoredomainsrocks.ru',
-];
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(handleCorsOrigin);
+app.use(handleCorsPreflight);
 app.use(requestLogger);
-app.use((req, res, next) => {
-  const { origin } = req.headers;
-  if (allowedCors.includes(origin)) {
-    res.header('Access-Control-Allow-Origin', origin);
-  }
-  const { method } = req;
-  const DEFAULT_ALLOWED_METHODS = 'GET,HEAD,PUT,PATCH,POST,DELETE';
-  if (method === 'OPTIONS') {
-    res.header('Access-Control-Allow-Methods', DEFAULT_ALLOWED_METHODS);
-    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
-    res.status(200).end();
-  }
-  next();
-});
+
 app.post('/signin', celebrate({
   body: Joi.object().keys({
     email: Joi.string().required().email(),

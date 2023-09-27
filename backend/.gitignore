@@ -1,3 +1,5 @@
+.env
+
 # Logs
 logs
 *.log
@@ -8,7 +10,6 @@ node_modules
 
 # Optional npm cache directory
 .npm
-.env
 
 # Optional REPL history
 .DS_Store

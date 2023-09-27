@@ -42,10 +42,11 @@ export default function App() {
     Promise.all([api.getUserData(), api.getCards()])
     .then(([userData, cards]) => {
       setCurrentUser(userData)
-      setCards(cards)
+      const reverseCards = cards.reverse();
+      setCards(reverseCards)
     })
     .catch(console.error);
-  }, [loggedIn]);
+  }, []);
 
   React.useEffect(() => {
     const token = localStorage.getItem('token');
@@ -91,7 +92,8 @@ export default function App() {
   }
 
   function handleCardLike(card) {
-    const isLiked = card.likes.some(i => i._id === currentUser._id);
+    console.log(card);
+    const isLiked = card.likes.some((item) => item === currentUser._id);
     api.changeLikeCardStatus(card._id, isLiked)
     .then((newCard) => setCards((state) => state.map((c) => c._id === card._id ? newCard : c)))
     .catch(console.error)

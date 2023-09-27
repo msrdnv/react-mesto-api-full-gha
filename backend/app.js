@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const { celebrate, Joi, errors } = require('celebrate');
+const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 const urlRegex = require('./utils/regex');
 const { login, createUser } = require('./controllers/users');
@@ -39,7 +40,12 @@ app.use((req, res, next) => {
   }
   return next();
 });
-
+app.use(requestLogger);
+app.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+});
 app.post('/signin', celebrate({
   body: Joi.object().keys({
     email: Joi.string().required().email(),
@@ -56,6 +62,7 @@ app.post('/signup', celebrate({
   }),
 }), createUser);
 app.use('/', auth, index);
+app.use(errorLogger);
 app.use(errors());
 app.use(handleErrors);
 app.use('*', handleNotFoundPage);

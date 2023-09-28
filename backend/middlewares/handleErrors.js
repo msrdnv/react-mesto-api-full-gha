@@ -27,6 +27,7 @@ module.exports.handleErrors = ((err, req, res, next) => {
     res.status(httpConstants.HTTP_STATUS_CONFLICT).send({ message: 'Пользователь с таким email уже зарегистрирован' });
     return;
   }
+  // eslint-disable-next-line no-console
   console.error(err);
   res.status(httpConstants.HTTP_STATUS_INTERNAL_SERVER_ERROR).send({ message: 'На сервере произошла ошибка' });
   next();

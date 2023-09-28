@@ -18,7 +18,7 @@ module.exports.findCards = (req, res, next) => {
 
 module.exports.createCard = (req, res, next) => {
   Card.create({ name: req.body.name, link: req.body.link, owner: req.user._id })
-    .then((data) => res.send(returnCardInfo(data)))
+    .then((data) => res.status(201).send(returnCardInfo(data)))
     .catch(next);
 };
 

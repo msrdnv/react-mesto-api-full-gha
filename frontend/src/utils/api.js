@@ -16,43 +16,42 @@ class Api {
     return fetch(url, options).then(this._checkResponse)
   };
 
-  getUserData() {
-    return this._request(`${this._baseUrl}/users/me`, { method: 'GET', headers: this._headers });
+  getUserData(token) {
+    return this._request(`${this._baseUrl}/users/me`, { method: 'GET', headers: {'Authorization' : `Bearer ${token}`, ...this._headers }});
   };
 
-  editUserData (data) {
-    return this._request(`${this._baseUrl}/users/me`, { method: 'PATCH', headers: this._headers, body: JSON.stringify(data) });
+  editUserData (data, token) {
+    return this._request(`${this._baseUrl}/users/me`, { method: 'PATCH', headers: {'Authorization' : `Bearer ${token}`, ...this._headers }, body: JSON.stringify(data)});
   };
 
-  getCards () {
-    return this._request(`${this._baseUrl}/cards`, { method: 'GET', headers: this._headers });
+  getCards (token) {
+    return this._request(`${this._baseUrl}/cards`, { method: 'GET', headers: {'Authorization' : `Bearer ${token}`, ...this._headers }});
   };
 
-  postNewCard (data) {
-    return this._request(`${this._baseUrl}/cards`, { method: 'POST', headers: this._headers, body: JSON.stringify(data) });
+  postNewCard (data, token) {
+    return this._request(`${this._baseUrl}/cards`, { method: 'POST', headers: {'Authorization' : `Bearer ${token}`, ...this._headers }, body: JSON.stringify(data)});
   };
 
-  changeLikeCardStatus (cardId, isLiked) {
+  changeLikeCardStatus (cardId, isLiked, token) {
     if (!isLiked) {
-      return this._request(`${this._baseUrl}/cards/${cardId}/likes`, { method: 'PUT', headers: this._headers });
+      return this._request(`${this._baseUrl}/cards/${cardId}/likes`, { method: 'PUT', headers: {'Authorization' : `Bearer ${token}`, ...this._headers }});
     } else {
-      return this._request(`${this._baseUrl}/cards/${cardId}/likes`, { method: 'DELETE', headers: this._headers });
+      return this._request(`${this._baseUrl}/cards/${cardId}/likes`, { method: 'DELETE', headers: {'Authorization' : `Bearer ${token}`, ...this._headers }});
     }
   }
 
-  deleteCard (cardId) {
-    return this._request(`${this._baseUrl}/cards/${cardId}`, { method: 'DELETE', headers: this._headers });
+  deleteCard (cardId, token) {
+    return this._request(`${this._baseUrl}/cards/${cardId}`, { method: 'DELETE', headers: {'Authorization' : `Bearer ${token}`, ...this._headers }});
   };
 
-  editUserAvatar (data) {
-    return this._request(`${this._baseUrl}/users/me/avatar`, { method: 'PATCH', headers: this._headers, body: JSON.stringify(data) });
+  editUserAvatar (data, token) {
+    return this._request(`${this._baseUrl}/users/me/avatar`, { method: 'PATCH', headers: {'Authorization' : `Bearer ${token}`, ...this._headers }, body: JSON.stringify(data)});
   };
 };
 
 export const api = new Api({
   baseUrl: 'https://mesto-backend.msrdnv.nomoredomainsrocks.ru',
   headers: {
-    'Authorization' : `Bearer ${localStorage.getItem('token')}`,
-    'Content-Type': 'application/json'
+    'Content-Type': 'application/json',
   }
 });

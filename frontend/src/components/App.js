@@ -36,20 +36,20 @@ export default function App() {
   const [loggedIn, setLoggedIn] = React.useState(false);
   const [email, setEmail] = React.useState('email@mail.com');
 
+  const token = localStorage.getItem('token');
   const navigate = useNavigate();
 
   React.useEffect(() => {
-    Promise.all([api.getUserData(), api.getCards()])
+    Promise.all([api.getUserData(token), api.getCards(token)])
     .then(([userData, cards]) => {
       setCurrentUser(userData)
       const reverseCards = cards.reverse();
       setCards(reverseCards)
     })
     .catch(console.error);
-  }, []);
+    }, [loggedIn, token]);
 
   React.useEffect(() => {
-    const token = localStorage.getItem('token');
     authApi.checkToken(token)
     .then((data) => {
       setEmail(data.email);
@@ -57,7 +57,7 @@ export default function App() {
       navigate('/');
     })
     .catch(console.error)
-  }, [loggedIn, navigate]);
+  }, [loggedIn, navigate, token]);
 
   function handleEditAvatarClick() {
     setEditAvatarPopupOpen(true);
@@ -93,13 +93,13 @@ export default function App() {
 
   function handleCardLike(card) {
     const isLiked = card.likes.some((item) => item === currentUser._id);
-    api.changeLikeCardStatus(card._id, isLiked)
+    api.changeLikeCardStatus(card._id, isLiked, token)
     .then((newCard) => setCards((state) => state.map((c) => c._id === card._id ? newCard : c)))
     .catch(console.error)
   }
 
   function handleCardDelete(card) {
-    api.deleteCard(card._id)
+    api.deleteCard(card._id, token)
     .then(() => setCards((state) => state.filter((c) => c._id !== card._id)))
     .catch(console.error)
   }
@@ -114,21 +114,21 @@ export default function App() {
 
   function handleUpdateUser({name, about}) {
     function makeRequest() {
-      return api.editUserData({name, about}).then(setCurrentUser);
+      return api.editUserData({name, about}, token).then(setCurrentUser);
     }
     handleSubmit(makeRequest);
   }
 
   function handleUpdateAvatar({avatar}) {
     function makeRequest() {
-      return api.editUserAvatar({avatar}).then(setCurrentUser);
+      return api.editUserAvatar({avatar}, token).then(setCurrentUser);
     }
     handleSubmit(makeRequest);
   }
 
   function handleAddPlaceSubmit({name, link}) {
     function makeRequest() {
-      return api.postNewCard({name, link}).then((newCard) => {
+      return api.postNewCard({name, link}, token).then((newCard) => {
         setCards([newCard, ...cards]);
         toggleAddPlaceInformer(!addPlaceInformer);
       })
@@ -143,14 +143,23 @@ export default function App() {
       setLoggedIn(true);
       navigate('/');
     })
-    .catch(console.error)
+    .catch((err) => {
+      setSuccessRegister(false);
+      handleInfoTooltipOpen();
+      console.error(err);
+    })
   }
 
   function handleRegister({password, email}) {
     authApi.signUp({password, email})
-    .then(() => setSuccessRegister(true))
-    .catch(() => setSuccessRegister(false))
-    .catch(console.error)
+    .then(() => {
+      setSuccessRegister(true);
+      navigate('/signin');
+    })
+    .catch((err) => {
+      setSuccessRegister(false);
+      console.error(err);
+    })
     .finally(() => handleInfoTooltipOpen())
   }
 
@@ -163,7 +172,7 @@ export default function App() {
   }
 
   return (
-    <AppContext.Provider value={{isLoading, closeAllPopups}}>
+    <AppContext.Provider value={{isLoading, closeAllPopups, token}}>
       <CurrentUserContext.Provider value={currentUser}>
         <ImagePopup card={selectedCard}/>
         <EditAvatarPopup isOpen={isEditAvatarPopupOpen} onUpdateAvatar={handleUpdateAvatar}/>

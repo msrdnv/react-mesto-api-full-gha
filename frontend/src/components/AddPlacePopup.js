@@ -18,7 +18,7 @@ export default function AddPlacePopup ({onAddPlace, isOpen, isAdd}) {
 
   React.useEffect(() => {
     setValues({name: '', link: ''});
-  }, [isAdd, setValues])
+  }, [isAdd, setValues, app.token])
 
   return (
     <PopupWithForm onClose={app.closeAllPopups} isOpen={isOpen} onSubmit={handleSubmit} title="Новое место" name="card" button={app.isLoading? 'Создание...' : 'Создать'}>

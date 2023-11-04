@@ -11,6 +11,6 @@
 
 IP 158.160.75.91
 
-Frontend https://mesto-frontend.msrdnv.nomoredomainsrocks.ru/
+Frontend https://mesto.msrdnv.nomoredomainsrocks.ru/
 
-Backend https://mesto-backend.msrdnv.nomoredomainsrocks.ru/
+Backend https://api.mesto.msrdnv.nomoredomainsrocks.ru/

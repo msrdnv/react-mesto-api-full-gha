@@ -1,6 +1,6 @@
 const allowedCors = [
-  'http://mesto-frontend.msrdnv.nomoredomainsrocks.ru',
-  'https://mesto-frontend.msrdnv.nomoredomainsrocks.ru',
+  'http://mesto.msrdnv.nomoredomainsrocks.ru',
+  'https://mesto.msrdnv.nomoredomainsrocks.ru',
   'http://localhost:3001',
 ];
 

@@ -9,7 +9,7 @@
 
 ## Ссылки на проект
 
-IP 158.160.75.91
+IP 84.201.140.249
 
 Frontend https://mesto.msrdnv.nomoredomainsrocks.ru/
 

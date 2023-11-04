@@ -50,7 +50,7 @@ class Api {
 };
 
 export const api = new Api({
-  baseUrl: 'https://api.msrdnv.nomoredomainsrocks.ru',
+  baseUrl: 'https://api.mesto.msrdnv.nomoredomainsrocks.ru',
   headers: {
     'Content-Type': 'application/json',
   }
